@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    Résultats de recherche
+{% endblock %}
+
+{% block main %}
+
+    <h1>Résultats de recherche pour : {{ search }}</h1>
+    {% for article in articles %}
+        {% if article.isPublished %}
+            <article>
+                <h1>Titre : {{ article.title }}</h1>
+                <a href="{{ path('article', {'id': article.id}) }}">Voir l'article</a>
+            </article>
+        {% else %}
+            <h2>L'article n'est pas publié</h2>
+        {% endif %}
+    {% endfor %}
+
+{% endblock %}
+
